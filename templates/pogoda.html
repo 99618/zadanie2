@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pogoda</title>
+</head>
+<body>
+    <h1>Pogoda w {{ miasto }}, {{ panstwo }}</h1>
+    {% if pogoda_w_miescie.error %}
+        <p>{{ pogoda_w_miescie.error }}</p>
+    {% else %}
+        <p>Temperatura: {{ pogoda_w_miescie.temperature }} °C</p>
+        <p>Prędkosc wiatru: {{ pogoda_w_miescie.windspeed }} km/h</p>
+    {% endif %}
+    <a href="/">Powrot</a>
+</body>
+</html>

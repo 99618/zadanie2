@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wybór kraju i miasta</title>
+    <script>
+        const wybor = {
+            "Polska": ["Warszawa", "Lublin", "Krakow"],
+            "Anglia": ["Manchester", "London", "Liverpool"],
+            "Niemcy": ["Berlin","Hamburg","Munich"],
+            "USA": ["Washington","Chicago","New York"]
+        };
+        function miasta(){
+            const wyborPanstwa = document.getElementById("panstwo");
+            const wyborMiasta = document.getElementById("miasto");
+            const wybranePanstwo = wyborPanstwa.value;
+            wyborMiasta.innerHTML=" ";
+            
+            if(wybor[wybranePanstwo]){
+                wybor[wybranePanstwo].forEach(miasto => {
+                    const temp = document.createElement("option");
+                    temp.value = miasto;
+                    temp.textContent = miasto;
+                    wyborMiasta.appendChild(temp);
+                })
+            }
+        }
+    </script>
+</head>
+    <body>
+        <h1>Wybierz kraj i wskaz miasto</h1>
+        <form action="/pogoda" method="post">
+            <label for="panstwo">Kraj:</label>
+            <select name="panstwo" id="panstwo" onchange="miasta()">
+                <option value="Polska">Polska</option>
+                <option value="Anglia">Anglia</option>
+                <option value="Niemcy">Niemcy</option>
+                <option value="USA">USA</option>
+            </select><br><br>
+            <label for="miasto">Miasto:</label>
+            <select name="miasto" id="miasto">
+            </select><br><br>
+            <button type="submit">Potwierdź</button>
+        </form>
+        <script>
+            miasta();
+        </script>
+    </body>
+    </html>
