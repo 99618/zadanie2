@@ -73,7 +73,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves
-          image: ghcr.io/99618/zadanie2:${{ steps.meta.outputs.tags }}
+          image: ${{ steps.meta.outputs.tags }}
           exit-code: true
           only-severities: critical,high
           dockerhub-user: ${{ secrets.DOCKERHUB_USERNAME }}
