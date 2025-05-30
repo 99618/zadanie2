@@ -60,12 +60,12 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: false
-          laod: true
+          load: true
           cache-from: |
             type=registry,ref=${{ env.CACHE_IMAGE }}
           cache-to: |
             type=registry,ref=${{ env.CACHE_IMAGE }},mode=max 
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: zadanie2:${{ steps.meta.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
       
       -
@@ -73,7 +73,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves
-          image: ${{ steps.meta.outputs.tags }}
+          image: zadanie2:${{ steps.meta.outputs.version }}
           exit-code: true
           only-severities: critical,high
           dockerhub-user: ${{ secrets.DOCKERHUB_USERNAME }}
